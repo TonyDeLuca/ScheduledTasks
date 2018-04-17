@@ -5,8 +5,9 @@
 /// </summary>
 public class ScheduleDate
 {
-    private Frequency ScheduledFrequency;
-    private FrequencyTime ScheduledFrequencyInterval;
+    private Frequency mScheduledFrequency;
+
+    private FrequencyTime mScheduledFrequencyInterval;
 
     /// <summary>
     /// Creates a ScheduleDate with the given frequency and interval.
@@ -15,8 +16,28 @@ public class ScheduleDate
     /// <param name="frequencyInterval"></param>
     public ScheduleDate(Frequency frequency, FrequencyTime frequencyInterval)
     {
-        ScheduledFrequency = frequency ?? throw new ArgumentNullException("frequency");
-        ScheduledFrequencyInterval = frequencyInterval ?? throw new ArgumentNullException("frequencyInterval");
+        mScheduledFrequency = frequency ?? throw new ArgumentNullException("frequency");
+        mScheduledFrequencyInterval = frequencyInterval ?? throw new ArgumentNullException("frequencyInterval");
+    }
+
+    /// <summary>
+    /// Describes on what days this schedule should occur.
+    /// </summary>
+    public Frequency ScheduledFrequencyDate
+    {
+        get
+        {
+            return mScheduledFrequency;
+        }
+    }
+
+    /// <summary>
+    /// Describes at what times this schedule should occur.
+    /// </summary>
+    public FrequencyTime ScheduledFrequencyTime { get
+        {
+            return mScheduledFrequencyInterval;
+        }
     }
 
     /// <summary>
@@ -27,9 +48,9 @@ public class ScheduleDate
     {
         lastRunDate = lastRunDate.StartOfMillisecond();
         DateTime currentDate = SystemTime.Now();
-        if (ScheduledFrequency is DailyFrequency)
+        if (ScheduledFrequencyDate is DailyFrequency)
         {
-            DailyFrequency frequency = (DailyFrequency)ScheduledFrequency;
+            DailyFrequency frequency = (DailyFrequency)ScheduledFrequencyDate;
 
             #region DailyFrequencyCalculation
 
@@ -46,7 +67,7 @@ public class ScheduleDate
             bool setDateTime = false;
             while (setDateTime == false)
             {
-                DateTime? nextValidTime = ScheduledFrequencyInterval.CalculateNextIntervalTime(nextRunDate, minDate, true);
+                DateTime? nextValidTime = ScheduledFrequencyTime.CalculateNextIntervalTime(nextRunDate, minDate, true);
                 if (nextValidTime != null)
                 {
                     nextRunDate = nextValidTime.Value;
@@ -61,9 +82,9 @@ public class ScheduleDate
 
             #endregion DailyFrequencyCalculation
         }
-        else if (ScheduledFrequency is WeeklyFrequency)
+        else if (ScheduledFrequencyDate is WeeklyFrequency)
         {
-            WeeklyFrequency frequency = (WeeklyFrequency)ScheduledFrequency;
+            WeeklyFrequency frequency = (WeeklyFrequency)ScheduledFrequencyDate;
 
             #region WeeklyFrequencyCalculation
 
@@ -86,7 +107,7 @@ public class ScheduleDate
             bool setDateTime = false;
             while (setDateTime == false)
             {
-                DateTime? nextValidTime = ScheduledFrequencyInterval.CalculateNextIntervalTime(nextRunDate, minDate, true);
+                DateTime? nextValidTime = ScheduledFrequencyTime.CalculateNextIntervalTime(nextRunDate, minDate, true);
                 if (nextValidTime != null)
                 {
                     nextRunDate = nextValidTime.Value;
@@ -101,9 +122,9 @@ public class ScheduleDate
 
             #endregion WeeklyFrequencyCalculation
         }
-        else if (ScheduledFrequency is MonthlyFrequency)
+        else if (ScheduledFrequencyDate is MonthlyFrequency)
         {
-            MonthlyFrequency frequency = (MonthlyFrequency)ScheduledFrequency;
+            MonthlyFrequency frequency = (MonthlyFrequency)ScheduledFrequencyDate;
 
             #region MonthlyFrequencyCalculation
 
@@ -124,7 +145,7 @@ public class ScheduleDate
             bool setDateTime = false;
             while (setDateTime == false)
             {
-                DateTime? nextValidTime = ScheduledFrequencyInterval.CalculateNextIntervalTime(nextRunDate, minDate, true);
+                DateTime? nextValidTime = ScheduledFrequencyTime.CalculateNextIntervalTime(nextRunDate, minDate, true);
                 if (nextValidTime != null)
                 {
                     nextRunDate = nextValidTime.Value;
@@ -139,8 +160,10 @@ public class ScheduleDate
 
             #endregion MonthlyFrequencyCalculation
         }
-
-        return new DateTime();
+        else
+        {
+            throw new NotImplementedException();
+        }
     }
 
     /// <summary>
@@ -149,6 +172,6 @@ public class ScheduleDate
     /// <returns></returns>
     public string GetScheduleSummary()
     {
-        return ScheduledFrequency.GetSummary() + " " + ScheduledFrequencyInterval.GetSummary() + ".";
+        return ScheduledFrequencyDate.GetSummary() + " " + ScheduledFrequencyTime.GetSummary() + ".";
     }
 }

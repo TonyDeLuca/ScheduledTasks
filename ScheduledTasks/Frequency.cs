@@ -6,9 +6,20 @@
 public abstract class Frequency
 {
     /// <summary>
-    /// The RepeatInterval tells us how often any given Frequency should repeat, controlled by the abstract method of GetNextDay.
+    /// The RepeatInterval tells how often any given Frequency should repeat, controlled by the abstract method of GetNextDay.
     /// </summary>
-    public int RepeatInterval = 0;
+    public int RepeatInterval
+    {
+        get
+        {
+            return mRepeatInterval;
+        }
+    }
+
+    /// <summary>
+    /// Accessed by RepeatInterval property.
+    /// </summary>
+    protected int mRepeatInterval = 0;
 
     /// <summary>
     /// An abstract function that must be implemented to return the next day a Frequency repeats after the specified day.

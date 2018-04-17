@@ -5,15 +5,15 @@
 /// </summary>
 public class MonthlyFrequency : Frequency
 {
-    //Used for the Calculated Day monthly frequency.
-    public DateTimeExtensions.CalculatedDayType CalculatedDayType;
 
-    public DateTimeExtensions.CalculcatedDayOption CalculcatedDayOption;
 
-    //Used for the "Day of the Month" monthly frequency.
-    public int DayOfTheMonth;
+    private DateTimeExtensions.CalculatedDayType mCalculatedDayType;
 
-    public MonthlyFrequencyType FrequencyType;
+    private DateTimeExtensions.CalculcatedDayOption mCalculcatedDayOption;
+
+    private int mDayOfTheMonth;
+
+    private MonthlyFrequencyType mFrequencyType;
 
     /// <summary>
     /// A MonthlyFrequency task that repeats on a certain day of the month every specified number of months.
@@ -32,9 +32,9 @@ public class MonthlyFrequency : Frequency
             throw new ArgumentOutOfRangeException("dayNumber");
         }
 
-        FrequencyType = MonthlyFrequencyType.DayOfTheMonth;
-        RepeatInterval = repeatInterval;
-        DayOfTheMonth = dayNumber;
+        mFrequencyType = MonthlyFrequencyType.DayOfTheMonth;
+        mRepeatInterval = repeatInterval;
+        mDayOfTheMonth = dayNumber;
     }
 
     /// <summary>
@@ -45,10 +45,10 @@ public class MonthlyFrequency : Frequency
     /// <param name="dayOption"></param>
     public MonthlyFrequency(int repeatInterval, DateTimeExtensions.CalculatedDayType dayType, DateTimeExtensions.CalculcatedDayOption dayOption) : base()
     {
-        FrequencyType = MonthlyFrequencyType.CalculatedDay;
-        CalculatedDayType = dayType;
-        CalculcatedDayOption = dayOption;
-        RepeatInterval = repeatInterval;
+        mFrequencyType = MonthlyFrequencyType.CalculatedDay;
+        mCalculatedDayType = dayType;
+        mCalculcatedDayOption = dayOption;
+        mRepeatInterval = repeatInterval;
     }
 
     /// <summary>
@@ -60,6 +60,42 @@ public class MonthlyFrequency : Frequency
         CalculatedDay
     }
 
+    public DateTimeExtensions.CalculatedDayType CalculatedDayType
+    {
+        get
+        {
+            return mCalculatedDayType;
+        }
+    }
+    /// <summary>
+    /// The calculated day of the month option, describing the day to select.
+    /// </summary>
+    public DateTimeExtensions.CalculcatedDayOption CalculcatedDayOption {
+        get
+        {
+            return mCalculcatedDayOption;
+        }
+    }
+    /// <summary>
+    /// The day of the month this frequency rule will set, if the monthly frequency type is DayOfTheMonth.
+    /// </summary>
+    public int DayOfTheMonth
+    {
+        get
+        {
+            return mDayOfTheMonth;
+        }
+    }
+    /// <summary>
+    /// The type of frequency this MonthlyFrequency describes.
+    /// </summary>
+    public MonthlyFrequencyType FrequencyType
+    {
+        get
+        {
+            return mFrequencyType;
+        }
+    }
     /// <summary>
     /// Returns the next day valid for this frequency interval after the given day.
     /// </summary>

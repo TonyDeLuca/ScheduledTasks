@@ -1,7 +1,7 @@
 ﻿using System;
 
 /// <summary>
-/// Used for getting SystemTime.Now(), time is changeable for unit testing
+/// Used for getting SystemTime.Now(), time is changeable for unit testing purposes
 /// </summary>
 public static class SystemTime
 {

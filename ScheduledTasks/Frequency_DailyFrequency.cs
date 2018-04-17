@@ -16,7 +16,7 @@ public class DailyFrequency : Frequency
             throw new ArgumentOutOfRangeException("repeatInterval");
         }
 
-        RepeatInterval = repeatInterval;
+        mRepeatInterval = repeatInterval;
     }
 
     /// <summary>

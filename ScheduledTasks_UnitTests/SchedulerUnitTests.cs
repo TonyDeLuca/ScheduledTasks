@@ -456,7 +456,7 @@ namespace TaskSchedulerUnitTests
             int repeatInterval = 1;
 
             int everyTime = 1;
-            FrequencyTime.FrequencyTimeOption everyType = FrequencyTime.FrequencyTimeOption.Hours;
+            FrequencyTime.FrequencyTimeUnit everyType = FrequencyTime.FrequencyTimeUnit.Hours;
 
             DateTime expectedValue = DateTime.Now.Date.AddHours(DateTime.Now.Hour + 1);
 
@@ -480,7 +480,7 @@ namespace TaskSchedulerUnitTests
             int repeatInterval = 1;
 
             int everyTime = 1;
-            FrequencyTime.FrequencyTimeOption everyType = FrequencyTime.FrequencyTimeOption.Minutes;
+            FrequencyTime.FrequencyTimeUnit everyType = FrequencyTime.FrequencyTimeUnit.Minutes;
 
             DateTime expectedValue = DateTime.Now.Date.AddHours(DateTime.Now.Hour).AddMinutes(DateTime.Now.Minute + 1);
 
@@ -504,7 +504,7 @@ namespace TaskSchedulerUnitTests
             int repeatInterval = 1;
 
             int everyTime = 1;
-            FrequencyTime.FrequencyTimeOption everyType = FrequencyTime.FrequencyTimeOption.Seconds;
+            FrequencyTime.FrequencyTimeUnit everyType = FrequencyTime.FrequencyTimeUnit.Seconds;
 
             DailyFrequency df1 = new DailyFrequency(repeatInterval);
             FrequencyTime dfi1 = new FrequencyTime(everyTime, everyType, startTime, endTime);
@@ -528,7 +528,7 @@ namespace TaskSchedulerUnitTests
             int repeatInterval = 1;
 
             int everyTime = 1;
-            FrequencyTime.FrequencyTimeOption everyType = FrequencyTime.FrequencyTimeOption.Hours;
+            FrequencyTime.FrequencyTimeUnit everyType = FrequencyTime.FrequencyTimeUnit.Hours;
 
             DailyFrequency df1 = new DailyFrequency(repeatInterval);
             FrequencyTime dfi1 = new FrequencyTime(everyTime, everyType, startTime, endTime);
@@ -552,7 +552,7 @@ namespace TaskSchedulerUnitTests
             int repeatInterval = 1;
 
             int everyTime = 1;
-            FrequencyTime.FrequencyTimeOption everyType = FrequencyTime.FrequencyTimeOption.Hours;
+            FrequencyTime.FrequencyTimeUnit everyType = FrequencyTime.FrequencyTimeUnit.Hours;
 
             DateTime expectedValue = DateTime.Now.Date.AddHours(DateTime.Now.Hour + 2);
 
@@ -583,7 +583,7 @@ namespace TaskSchedulerUnitTests
             DateTime endDateTime = new DateTime(2040, 1, 1).SetTime(1, 0, 0, 1);
             DateTime lastRunDate = new DateTime(2040, 1, 1).SetTime(0, 0, 0, 0);
 
-            FrequencyTime.FrequencyTimeOption everyType = FrequencyTime.FrequencyTimeOption.Hours;
+            FrequencyTime.FrequencyTimeUnit everyType = FrequencyTime.FrequencyTimeUnit.Hours;
             DailyFrequency df1 = new DailyFrequency(repeatInterval);
             FrequencyTime dfi1 = new FrequencyTime(everyTime, everyType, startTime, endTime);
             ScheduleDate scheduledDate1 = new ScheduleDate(df1, dfi1);
@@ -636,7 +636,7 @@ namespace TaskSchedulerUnitTests
             DateTime endDateTime = new DateTime(2040, 1, 1).SetTime(1, 0, 0, 1);
             DateTime lastRunDate = new DateTime(2040, 1, 1).SetTime(0, 0, 0, 0);
 
-            FrequencyTime.FrequencyTimeOption everyType = FrequencyTime.FrequencyTimeOption.Hours;
+            FrequencyTime.FrequencyTimeUnit everyType = FrequencyTime.FrequencyTimeUnit.Hours;
             DailyFrequency df1 = new DailyFrequency(repeatInterval);
             FrequencyTime dfi1 = new FrequencyTime(everyTime, everyType, startTime, endTime);
             ScheduleDate scheduledDate1 = new ScheduleDate(df1, dfi1);
@@ -689,7 +689,7 @@ namespace TaskSchedulerUnitTests
             DateTime endDateTime = new DateTime(2041, 1, 1, 23, 59, 59);
             DateTime lastRunDate = startDateTime;
 
-            FrequencyTime.FrequencyTimeOption everyType = FrequencyTime.FrequencyTimeOption.Hours;
+            FrequencyTime.FrequencyTimeUnit everyType = FrequencyTime.FrequencyTimeUnit.Hours;
             DailyFrequency df1 = new DailyFrequency(repeatInterval);
             FrequencyTime dfi1 = new FrequencyTime(everyTime, everyType, startTime, endTime);
             ScheduleDate scheduledDate1 = new ScheduleDate(df1, dfi1);
@@ -821,7 +821,7 @@ namespace TaskSchedulerUnitTests
             int repeatInterval = 1;
 
             int everyTime = 1;
-            FrequencyTime.FrequencyTimeOption everyType = FrequencyTime.FrequencyTimeOption.Hours;
+            FrequencyTime.FrequencyTimeUnit everyType = FrequencyTime.FrequencyTimeUnit.Hours;
 
             WeeklyFrequency wf1 = new WeeklyFrequency(repeatInterval);
             wf1.Monday = true;
@@ -854,7 +854,7 @@ namespace TaskSchedulerUnitTests
             int repeatInterval = 1;
 
             int everyTime = 1;
-            FrequencyTime.FrequencyTimeOption everyType = FrequencyTime.FrequencyTimeOption.Hours;
+            FrequencyTime.FrequencyTimeUnit everyType = FrequencyTime.FrequencyTimeUnit.Hours;
 
             WeeklyFrequency wf1 = new WeeklyFrequency(repeatInterval);
             wf1.Tuesday = true;
@@ -883,7 +883,7 @@ namespace TaskSchedulerUnitTests
             int repeatInterval = 1;
 
             int everyTime = 1;
-            FrequencyTime.FrequencyTimeOption everyType = FrequencyTime.FrequencyTimeOption.Hours;
+            FrequencyTime.FrequencyTimeUnit everyType = FrequencyTime.FrequencyTimeUnit.Hours;
 
             WeeklyFrequency wf1 = new WeeklyFrequency(repeatInterval);
             wf1.Monday = true;
@@ -910,7 +910,7 @@ namespace TaskSchedulerUnitTests
             int repeatInterval = 1;
 
             int everyTime = 1;
-            FrequencyTime.FrequencyTimeOption everyType = FrequencyTime.FrequencyTimeOption.Hours;
+            FrequencyTime.FrequencyTimeUnit everyType = FrequencyTime.FrequencyTimeUnit.Hours;
 
             WeeklyFrequency wf1 = new WeeklyFrequency(repeatInterval);
             wf1.Monday = true;
@@ -946,7 +946,7 @@ namespace TaskSchedulerUnitTests
             int repeatInterval = 1;
             int dayNumber = 1;
             int everyTime = 1;
-            FrequencyTime.FrequencyTimeOption everyType = FrequencyTime.FrequencyTimeOption.Hours;
+            FrequencyTime.FrequencyTimeUnit everyType = FrequencyTime.FrequencyTimeUnit.Hours;
 
             MonthlyFrequency date = new MonthlyFrequency(repeatInterval, dayNumber);
             FrequencyTime time = new FrequencyTime(everyTime, everyType, startTime, endTime);
@@ -979,7 +979,7 @@ namespace TaskSchedulerUnitTests
             int repeatInterval = 1;
             int dayNumber = 1;
             int everyTime = 1;
-            FrequencyTime.FrequencyTimeOption everyType = FrequencyTime.FrequencyTimeOption.Hours;
+            FrequencyTime.FrequencyTimeUnit everyType = FrequencyTime.FrequencyTimeUnit.Hours;
 
             MonthlyFrequency date = new MonthlyFrequency(repeatInterval, dayNumber);
             FrequencyTime time = new FrequencyTime(everyTime, everyType, startTime, endTime);
@@ -1010,7 +1010,7 @@ namespace TaskSchedulerUnitTests
             int repeatInterval = 1;
             int dayNumber = 1;
             int everyTime = 1;
-            FrequencyTime.FrequencyTimeOption everyType = FrequencyTime.FrequencyTimeOption.Hours;
+            FrequencyTime.FrequencyTimeUnit everyType = FrequencyTime.FrequencyTimeUnit.Hours;
 
             MonthlyFrequency date = new MonthlyFrequency(repeatInterval, dayNumber);
             FrequencyTime time = new FrequencyTime(everyTime, everyType, startTime, endTime);

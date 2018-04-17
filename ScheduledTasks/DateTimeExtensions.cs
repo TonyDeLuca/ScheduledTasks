@@ -1,7 +1,14 @@
 ﻿using System;
 
+
+/// <summary>
+/// DateTimeExtensions provide additional functionality to DateTime objects useful for this class library.
+/// </summary>
 public static class DateTimeExtensions
 {
+    /// <summary>
+    /// Describes the instance of a day to find in a given month.
+    /// </summary>
     public enum CalculatedDayType
     {
         First = 1,
@@ -11,6 +18,9 @@ public static class DateTimeExtensions
         Last
     }
 
+    /// <summary>
+    /// Describes the day type to find in a given month.
+    /// </summary>
     public enum CalculcatedDayOption
     {
         Monday = 0,
@@ -23,50 +33,6 @@ public static class DateTimeExtensions
         Day,
         Weekday,
         WeekendDay
-    }
-
-    /// <summary>
-    /// The total months between two dates.
-    /// </summary>
-    /// <param name="start"></param>
-    /// <param name="end"></param>
-    /// <returns></returns>
-    public static int TotalMonths(this DateTime start, DateTime end)
-    {
-        return (start.Year * 12 + start.Month) - (end.Year * 12 + end.Month);
-    }
-
-    /// <summary>
-    /// Returns the first day of the week specified..
-    /// </summary>
-    /// <param name="dt"></param>
-    /// <param name="startOfWeek">The day of the week considered the first day of the week.</param>
-    /// <returns></returns>
-    public static DateTime StartOfWeek(this DateTime dt, DayOfWeek startOfWeek)
-    {
-        int diff = (7 + (dt.DayOfWeek - startOfWeek)) % 7;
-        return dt.AddDays(-1 * diff).Date;
-    }
-
-    /// <summary>
-    /// Returns the first day of the month.
-    /// </summary>
-    /// <param name="dt"></param>
-    /// <returns></returns>
-    public static DateTime StartOfMonth(this DateTime dt)
-    {
-        int diff = dt.Day - 1;
-        return dt.AddDays(-diff).Date;
-    }
-
-    /// <summary>
-    /// Returns the date and time without any ticks after the millisecond.
-    /// </summary>
-    /// <param name="dt"></param>
-    /// <returns></returns>
-    public static DateTime StartOfMillisecond(this DateTime dt)
-    {
-        return dt.AddTicks(-(dt.Ticks % 10000000));
     }
 
     /// <summary>
@@ -266,5 +232,49 @@ public static class DateTimeExtensions
         retVal = retVal.AddSeconds(seconds);
         retVal = retVal.AddMilliseconds(milliseconds);
         return retVal;
+    }
+
+    /// <summary>
+    /// Returns the date and time without any ticks after the millisecond.
+    /// </summary>
+    /// <param name="dt"></param>
+    /// <returns></returns>
+    public static DateTime StartOfMillisecond(this DateTime dt)
+    {
+        return dt.AddTicks(-(dt.Ticks % 10000000));
+    }
+
+    /// <summary>
+    /// Returns the first day of the month.
+    /// </summary>
+    /// <param name="dt"></param>
+    /// <returns></returns>
+    public static DateTime StartOfMonth(this DateTime dt)
+    {
+        int diff = dt.Day - 1;
+        return dt.AddDays(-diff).Date;
+    }
+
+    /// <summary>
+    /// Returns the first day of the week specified..
+    /// </summary>
+    /// <param name="dt"></param>
+    /// <param name="startOfWeek">The day of the week considered the first day of the week.</param>
+    /// <returns></returns>
+    public static DateTime StartOfWeek(this DateTime dt, DayOfWeek startOfWeek)
+    {
+        int diff = (7 + (dt.DayOfWeek - startOfWeek)) % 7;
+        return dt.AddDays(-1 * diff).Date;
+    }
+
+    /// <summary>
+    /// The total months between two dates.
+    /// </summary>
+    /// <param name="start"></param>
+    /// <param name="end"></param>
+    /// <returns></returns>
+    public static int TotalMonths(this DateTime start, DateTime end)
+    {
+        return (start.Year * 12 + start.Month) - (end.Year * 12 + end.Month);
     }
 }

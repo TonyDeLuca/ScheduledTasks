@@ -6,6 +6,10 @@ using System.Collections.Generic;
 /// </summary>
 public class WeeklyFrequency : Frequency
 {
+    
+
+    //Days of the week are publicly accessible/changeable without negative side-effects
+    //no need to make this a property.
     public bool Friday;
     public bool Monday;
     public bool Saturday;
@@ -25,7 +29,7 @@ public class WeeklyFrequency : Frequency
             throw new ArgumentOutOfRangeException("repeatInterval");
         }
 
-        RepeatInterval = repeatInterval;
+        mRepeatInterval = repeatInterval;
     }
 
     /// <summary>
