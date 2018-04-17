@@ -1,6 +1,8 @@
 # ScheduledTasks
 C# class library for determining the next time a scheduled task should be run based on defined rules. Based on a last run date the next valid execution date of a scheduled task will be calculated following rules such as "Occurs every 2 day(s). Runs every 1 hour starting at 3:00 AM and ending at 5:00 AM."
 
+---
+
 Basic Usage:
 
 Create a new ScheduledTask class, providing the following parameters:
@@ -30,3 +32,15 @@ The first constructor accepts a DataTime describing the single time the task sho
 
 The second constructor accepts a time between executions, a start time and an end time. The date part of the DataTime parameters is ignored.
 
+---
+
+Example:
+
+    //Create a task that runs every 2 days at 3:00 AM.
+    DailyFrequency dailyFrequency = new DailyFrequency(2);
+    FrequencyTime frequencyTime = new FrequencyTime(new DateTime(0, 0, 0, 3, 0, 0));
+    ScheduledTask task = new ScheduledTask("Name", "Description", true, dailyFrequency, frequencyTime);
+
+    DateTime lastRunDate = DateTime.Now;
+    DateTime nextRunDate = task.GetNextRunDate(lastRunDate);
+    //The nextRunDate will be two days in the future at 3:00 AM.
